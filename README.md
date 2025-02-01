@@ -2,7 +2,7 @@
 
 ## Description
 Une application de chatbot construite avec React.js, intégrant les API de Google AI (Chat GPT) et Open AI (Gemini). Cette application permet de discuter avec un chatbot en temps réel, avec une interface fluide, un mode sombre/clair, et un support Markdown.
-
+![Description de l'image](./demo_img/demo_chat.png)
 ## Fonctionnalités
 - **Chat GPT (Google AI) et Gemini (Open AI)** : Intégration des API pour des réponses générées par l'IA.
 - **Streaming en temps réel** : Affichage immédiat des messages.
