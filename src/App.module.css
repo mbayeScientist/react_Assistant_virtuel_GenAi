@@ -27,3 +27,63 @@
   border-radius: 16px;
   overflow-y: auto;
 }
+
+
+
+
+/* Pour la selection de lassistant */
+
+.AssistantSelector {
+  display: flex; /* Align label and select horizontally */
+  align-items: center; /* Vertically center */
+  margin-bottom: 1rem; /* Add some spacing below - adjust as needed */
+}
+
+.AssistantSelector label {
+  margin-right: 0.5rem; /* Add space between label and select */
+  font-weight: bold; /* Make label a bit bolder */
+}
+
+.AssistantSelector select {
+  padding: 0.5rem; /* Add some padding inside the select */
+  border: 1px solid #ccc; /* Add a border */
+  border-radius: 4px; /* Round the corners */
+  font-size: 1rem; /* Match the font size */
+  appearance: none; /* Remove default select arrow (for better cross-browser styling) */
+  -webkit-appearance: none; /* For Safari */
+  -moz-appearance: none; /* For Firefox */
+  background-color: #fff; /* Set background color */
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'%3e%3cpath fill='none' d='M0 0h24v24H0z'/%3e%3cpath d='M12 14l-4-4h8z' fill='rgba(0,0,0,0.54)'/%3e%3c/svg%3e"); /* Add custom arrow */
+  background-repeat: no-repeat;
+  background-position: right 0.5rem center;
+  padding-right: 2rem; /* Adjust padding to accommodate arrow */
+  cursor: pointer; /* Make it a clickable element */
+  transition: border-color 0.2s ease-in-out; /* Add a transition for border color */
+}
+
+.AssistantSelector select:focus {
+  outline: none; /* Remove default focus outline */
+  border-color: #007bff; /* Highlight border on focus (example color) */
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Add a subtle box shadow on focus */
+}
+
+.AssistantSelector select:hover {
+  border-color: #80bdff; /* Slightly darker border on hover */
+}
+
+.AssistantSelector select option {
+  padding: 0.5rem;
+}
+
+/* Responsive adjustments (if needed) */
+@media (max-width: 768px) {
+  .AssistantSelector {
+      flex-direction: column; /* Stack label and select vertically on smaller screens */
+      align-items: flex-start;
+  }
+
+  .AssistantSelector label {
+      margin-right: 0;
+      margin-bottom: 0.5rem;
+  }
+}

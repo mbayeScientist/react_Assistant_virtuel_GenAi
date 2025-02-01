@@ -1,5 +1,6 @@
 import { useState , useEffect } from "react";
-import { Assistant } from "./assistants/googleai";
+import { Assistant } from "./assistants/llama2";
+import { Assistant as Assitant2 } from "./assistants/googleai";
 import { Loader } from "./components/Loader/Loader";
 import { Chat } from "./components/Chat/Chat";
 import { Controls } from "./components/Controls/Controls";
@@ -9,7 +10,8 @@ import styles from "./App.module.css";
 
 
 function App() {
-  const assistant = new Assistant();
+  const [selectedAssistant, setSelectedAssistant] = useState("llama2"); // Par defaut
+  const [assistant, setAssistant] = useState(new Assistant()); // Initialisation de l'assistant
   const [messages, setMessages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isStreaming, setIsStreaming] = useState(false);
@@ -30,6 +32,16 @@ function App() {
 
     return () => unsubscribe();
   }, []);
+
+  const handleAssistantChange = (event) => {
+    const selected = event.target.value;
+    setSelectedAssistant(selected);
+    if (selected === "llama2") {
+        setAssistant(new Assistant());
+    } else if (selected === "googleai") {
+        setAssistant(new Assitant2()); // Create a new instance of GoogleAI
+    }
+};
 
   // ✅ Connexion anonyme
   const handleLogin = async () => {
@@ -95,6 +107,19 @@ function App() {
             <h3>Utilisateur : {user.isAnonymous ? "Accès sans compte" : user.email}</h3>
           </div>
         )}
+        {/* Assistant Selection Dropdown */}
+        <div className={styles.AssistantSelector}>
+                    <label htmlFor="assistantSelect">Choisir un modèle</label>
+                    <select
+                        id="assistantSelect"
+                        value={selectedAssistant}
+                        onChange={handleAssistantChange}
+                    >
+                        <option value="llama2">Llama 2 Open Source</option>
+                        <option value="googleai">Google AI </option>
+                        {/* Add more options as needed */}
+                    </select>
+          </div>
       </header>
       <div className={styles.ChatContainer}>
         <Chat messages={messages} />
